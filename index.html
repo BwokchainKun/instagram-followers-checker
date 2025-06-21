@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">Follower Checker</title>
+  <link rel="stylesheet" href="style/style.css" />
+</head>
+<body>
+<div class="lang-switch" id="langSwitch">
+  <div class="lang-highlight"></div>
+  <div class="lang-option" data-lang="id">
+    <img src="https://flagcdn.com/w40/id.png" alt="Bahasa Indonesia" />
+  </div>
+  <div class="lang-option" data-lang="en">
+    <img src="https://flagcdn.com/w40/gb.png" alt="English" />
+  </div>
+</div>
+
+  <h1 class="title" style="color: white; text-align: center;" data-i18n="title">Cek Followers Instagram</h1>
+
+  <div class="input-data">
+    <div class="datainput">
+      <h1 class="title2" data-i18n="upload_title">Unggah Berkas Zip dari Instagram</h1>
+      <input type="file" id="zipInput" accept=".zip" />
+      <label for="zipInput" id="zipLabel" data-i18n="upload_zip_label">Unggah ZIP</label>
+      <div id="fileName" data-i18n="no_file_selected">Belum ada berkas dipilih</div>
+      <br /><br />
+      <button id="processButton" data-i18n="process_button">Cari Tahu</button>
+      <a href="how-to-get-json-data.html"><h5 data-i18n="how_to_get_json">Tidak tahu cara mendapatkan file ZIP Instagram? Klik di sini</h5></a>
+    </div>
+    <div id="output"></div>
+  </div>
+
+  <div class="footer">
+    <script src="https://edge-cdn.trakteer.id/js/embed/trbtn.min.js?date=18-11-2023"></script>
+    <script>
+      (function () {
+        var trbtnId = trbtn.init('Small Donation for Coffee', '#be1e2d', 'https://trakteer.id/ichi-pravda-nt9kk', 'https://edge-cdn.trakteer.id/images/embed/trbtn-icon.png?date=18-11-2023', '40');
+        trbtn.draw(trbtnId);
+      })();
+    </script>
+  </div>
+  <script src="js/toogle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip/dist/jszip.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/lang.js"></script>
+  <script>
+    document.getElementById('lang-id').addEventListener('click', () => updateLanguage('id'));
+    document.getElementById('lang-en').addEventListener('click', () => updateLanguage('en'));
+    document.addEventListener('DOMContentLoaded', () => updateLanguage(currentLang));
+  </script>
+
+</body>
+</html>
