@@ -1,4 +1,6 @@
 <h1>Instagram Followers Checker</h1>
+![follower checker](https://github.com/user-attachments/assets/ba3d1917-2e7c-455b-af46-d16c51eabe78)
+
 <p>Check your Instagram followers and see who has unfollowed you.</p>
 <p>This Simple website was built with simple html, css, and javscript</p>
 <p>User is gonna request zip file from instagramm contain json file about following and followers</p>
