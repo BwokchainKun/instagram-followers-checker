@@ -6,5 +6,5 @@
 <p>has features to change language english and Indonesia</p>
 <p>has tutorial about how to get the zip file from instagram</p>
 <p>to try the website kindly visit</p>
-<a href="https://followerschecker.vectarna.my.id"><h3>Click Here to try the website</h3></a>
+<h3>Click the link below to try the website</h3>
 https://followerschecker.vectarna.my.id
