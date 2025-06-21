@@ -1,5 +1,5 @@
-<h1>Instagram Followers Checker</h1>
-![follower checker](https://github.com/user-attachments/assets/ba3d1917-2e7c-455b-af46-d16c51eabe78)
+# **Instagram Follower Checker** </br>
+![fck](https://github.com/user-attachments/assets/e2066c50-9f6d-4a1a-b413-d51e34af7c9a) </br>
 
 <p>Check your Instagram followers and see who has unfollowed you.</p>
 <p>This Simple website was built with simple html, css, and javscript</p>
