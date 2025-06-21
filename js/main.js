@@ -1,3 +1,4 @@
+// BWOKCHAINKUN >_<
 const zipInput = document.getElementById('zipInput');
 const processButton = document.getElementById('processButton');
 const fileNameDisplay = document.getElementById('fileName');

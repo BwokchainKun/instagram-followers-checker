@@ -1,3 +1,4 @@
+//   BWOKCHAINKUN >_<
  const langSwitch = document.getElementById('langSwitch');
   const highlight = langSwitch.querySelector('.lang-highlight');
   const options = langSwitch.querySelectorAll('.lang-option');

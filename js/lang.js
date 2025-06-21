@@ -1,3 +1,4 @@
+// BWOKCHAINKUN >_<
 const translations = {
   id: {
     title: "Cek Followers Instagram",
