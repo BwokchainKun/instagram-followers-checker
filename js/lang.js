@@ -16,7 +16,9 @@ const translations = {
     already_got: "Sudah mendapatkan file ZIP kamu?",
     check_now: "Cek pengikutmu di sini",
     no_support: "Browser kamu tidak mendukung tag video.",
-    videosrc: "video/vv.mp4"
+    videosrc: "video/vv.mp4",
+    unsuppoerted_browser1 : "<b>Sepertinya Browser Kamu gak mendukung.</b>",
+    unsuppoerted_browser2 : "Copy Link dan Buka di Chrome atau Browser lain yuk, <b style='color:blue;'>https://followerschecker.vectarna.my.id</b>"
   },
   en: {
     title: "Instagram Follower Checker",
@@ -34,7 +36,9 @@ const translations = {
     already_got: "Already got your ZIP file?",
     check_now: "Find your follower here",
     no_support: "Your browser does not support the video tag.",
-    videosrc: "video/v2.mp4"
+    videosrc: "video/v2.mp4",
+    unsuppoerted_browser1 : "<b>Looks like you are using Unsupported Browser</b>",
+    unsuppoerted_browser2 : "Please copy the link and paste on Supported Browser like Chrome/Safari/Firefox/Etc. <b style='color:blue;'>https://followerschecker.vectarna.my.id</b>"
   }
 };
 
@@ -45,7 +49,9 @@ function updateLanguage(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (translations[lang][key]) {
-      el.textContent = translations[lang][key];
+      // Using innerHTML instead of textContent to allow HTML tags in translations
+    //   el.textContent = translations[lang][key];
+    el.innerHTML = translations[lang][key];
     }
   });
 

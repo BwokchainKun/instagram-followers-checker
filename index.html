@@ -28,10 +28,20 @@
       <input type="file" id="zipInput" accept=".zip" />
       <label for="zipInput" id="zipLabel" data-i18n="upload_zip_label">Unggah ZIP</label>
       <div id="fileName" data-i18n="no_file_selected">Belum ada berkas dipilih</div>
+      <br>
+      <!-- WEB IS NOT WORKING ON SOME BROWSER WARNING -->
+      <div id="unsuppoerted_browser" style="display:none">
+          <h1>⚠️⚠️⚠️</h1>
+          <h2 data-i18n="unsuppoerted_browser1">Sepertinya Browser Kamu gak mendukung.</h2>
+          <p data-i18n="unsuppoerted_browser2">Copy Link dan Buka di Chrome atau Browser lain yuk, <b style="color:blue;">https://followerschecker.vectarna.my.id</b></p>
+      </div>
+      <!-- WEB IS NOT WORKING ON SOME BROWSER WARNING -->
+      
       <br /><br />
-      <button id="processButton" data-i18n="process_button">Cari Tahu</button>
+      <button id="processButton" data-i18n="process_button">Ayo Cek Pengikutmu</button>
       <a href="how-to-get-json-data.html"><h5 data-i18n="how_to_get_json">Tidak tahu cara mendapatkan file ZIP Instagram? Klik di sini</h5></a>
     </div>
+<div id="deteksi" style="display:none"></div>
     <div id="output"></div>
   </div>
 
@@ -49,10 +59,46 @@
   <script src="js/main.js"></script>
   <script src="js/lang.js"></script>
   <script>
-    document.getElementById('lang-id').addEventListener('click', () => updateLanguage('id'));
-    document.getElementById('lang-en').addEventListener('click', () => updateLanguage('en'));
-    document.addEventListener('DOMContentLoaded', () => updateLanguage(currentLang));
+  
+  document.addEventListener('DOMContentLoaded', () => {
+
+  // NEW LANG SWITCHER
+  updateLanguage(currentLang);
+
+  document.querySelectorAll('.lang-option').forEach(el => {
+    el.addEventListener('click', () => {
+      const lang = el.getAttribute('data-lang');
+      updateLanguage(lang);
+    });
+  });
+});
+// NEW LANG SWITCHER END
+
+// REMOVING OLD LANG SWITCHER
+    // document.getElementById('lang-id').addEventListener('click', () => updateLanguage('id'));
+    // document.getElementById('lang-en').addEventListener('click', () => updateLanguage('en'));
+    // document.addEventListener('DOMContentLoaded', () => updateLanguage(currentLang));
+// REMOVING OLD LANG SWITCHER END
   </script>
+  
+<!-- NEW SCRIPT TO DETECT UNSUPPOERTED BROWSER (ONLY TIKTOK BROWSER FOR THIS UPDATE) -->
+<script>
+const ua = navigator.userAgent;
+
+let info = "Browserbiasa";
+if (ua.toLowerCase().includes("instagram")) info = "InstagramBrowser";
+if (ua.toLowerCase().includes("twitter")) info = "TwitterXBrowser";
+if (ua.toLowerCase().includes("appname/trill") || ua.toLowerCase().includes("bytedancewebview")) info = "TikTokBrowser";
+
+document.getElementById("deteksi").textContent = "Deteksi: " + info;
+
+
+if (info == "TikTokBrowser" ) {
+    document.getElementById('unsuppoerted_browser').style.display = "block";
+}
+</script>
+<!-- NEW SCRIPT TO DETECT UNSUPPOERTED BROWSER (ONLY TIKTOK BROWSER FOR THIS UPDATE) END-->
+
 
 </body>
 </html>
