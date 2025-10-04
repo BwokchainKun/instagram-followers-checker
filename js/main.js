@@ -48,17 +48,35 @@ processButton.addEventListener('click', async () => {
 
   const followingData = files.following.relationships_following.map(item => ({
     href: item.string_list_data[0].href,
-    value: item.string_list_data[0].value
+    // new instagram json update, username is in title, not value
+    title: item.title || null,
+    // Keep value for older instagram json
+    value: item.string_list_data[0].value,
   }));
 
-  // cari perbedaan antara followers dan following
-  const notFollowingBack = followersData.filter(follower =>
-    !followingData.some(following => following.value === follower.value)
-  );
+  // Check if the followingData uses new format (title instead of value)
+  const isNewJson = followingData.every(item => item.title && !item.value);
+  let notFollowingBack;
+  let notFollowedBack;
 
-  const notFollowedBack = followingData.filter(following =>
-    !followersData.some(follower => follower.value === following.value)
-  );
+  // new code for new json update, to compare followers and following
+  if (isNewJson) {
+     notFollowingBack = followersData.filter(follower =>
+    !followingData.some(following => following.title === follower.value)
+    );
+
+    notFollowedBack = followingData.filter(following =>
+      !followersData.some(follower => follower.value === following.title)
+    );
+  } else {
+    notFollowingBack = followersData.filter(follower =>
+    !followingData.some(following => following.value === follower.value)
+    );
+
+    notFollowedBack = followingData.filter(following =>
+      !followersData.some(follower => follower.value === following.value)
+    );
+  }
 
   //Pending follow requests
   let pendingRequests = [];
@@ -72,11 +90,13 @@ processButton.addEventListener('click', async () => {
   output.innerHTML = `
     <div class="item">
       <h3>${translations[currentLang]['not_following_you_back']}</h3>
-      <ul>${notFollowedBack.map(user => `<li><a href="${user.href}" target="_blank">${user.value}</a></li>`).join('')}</ul>
+      <script>// Adjust to show title if value is null (new json format)</script>
+      <ul>${notFollowedBack.map(user => `<li><a href="${user.href}" target="_blank">${user.value || user.title}</a></li>`).join('')}</ul>
     </div>
     <div class="item">
       <h3>${translations[currentLang]['you_not_following_back']}</h3>
-      <ul>${notFollowingBack.map(user => `<li><a href="${user.href}" target="_blank">${user.value}</a></li>`).join('')}</ul>
+      <script>// Adjust to show title if value is null (new json format)</script>
+      <ul>${notFollowingBack.map(user => `<li><a href="${user.href}" target="_blank">${user.value || user.title}</a></li>`).join('')}</ul>
     </div>
     <div class="item">
       <h3>${translations[currentLang]['pending_requests']}</h3>
